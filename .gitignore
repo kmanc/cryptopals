@@ -1,0 +1,11 @@
+# Directories
+__pycache__/
+.idea/
+.eggs/
+.pytest_cache/
+cryptopals.egg-info/
+
+# Files
+.DS_Store
+*.json
+*.pyc
