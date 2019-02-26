@@ -4,6 +4,8 @@ __pycache__/
 .eggs/
 .pytest_cache/
 cryptopals.egg-info/
+build/
+dist/
 
 # Files
 .DS_Store
