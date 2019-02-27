@@ -13,3 +13,15 @@ def repeat_key(byte_string, key):
 
     return fixed_size(byte_string, full_key)
 
+
+def break_single_byte(byte_string):
+    """Takes in a string of bytes representing a single-character XOR-encrypted ciphertext. Outputs the plaintext for
+    that ciphertext"""
+    best = tuple((0, bytes()))
+    for char in range(0, 255):
+        candidate = repeat_key(byte_string, bytes([char]))
+        scored = generate.english_score(candidate)
+        if scored > best[0]:
+            best = (scored, candidate)
+
+    return best[1]
