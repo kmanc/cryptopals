@@ -37,7 +37,7 @@ class TestChallenges:
         assert attack_output.upper() == answer_file.upper()
 
     @staticmethod
-    def test_challenge_3():
+    def test_challenge_4():
         """Break single byte XOR"""
 
         challenge_file = file.to_lines("tests/challenge_inputs/set_1/challenge_4.txt")
@@ -47,5 +47,14 @@ class TestChallenges:
 
         assert attack_output.upper() == answer_file.upper()
 
+    @staticmethod
+    def test_challenge_5():
+        """Do repeat key XOR"""
 
+        challenge_file = file.to_string("tests/challenge_inputs/set_1/challenge_5.txt")
+        answer_file = file.to_string("tests/challenge_answers/set_1/challenge_5.txt")
+
+        attack_output = set_1.repeat_key_xor(challenge_file)
+
+        assert attack_output == answer_file
 

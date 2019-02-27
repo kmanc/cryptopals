@@ -47,4 +47,14 @@ def find_and_break_repeat_hex_char_xor(input_lines):
     return output
 
 
+def repeat_key_xor(input_string):
+    """https://cryptopals.com/sets/1/challenges/5"""
+
+    input_bytes = convert.ascii_to_bytes(input_string)
+    key = "ICE"
+    key_bytes = convert.ascii_to_bytes(key)
+    xor_result = xor.repeat_key(input_bytes, key_bytes)
+    output = convert.bytes_to_hex(xor_result)
+
+    return output
 
