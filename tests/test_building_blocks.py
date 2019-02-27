@@ -5,7 +5,7 @@ from cryptopals.building_blocks import pad
 from cryptopals.building_blocks import xor
 
 
-class TestBuildingBlocks:
+class TestBuildingBlockConvert:
 
     @staticmethod
     def test_ascii_to_bytes():
@@ -77,6 +77,8 @@ class TestBuildingBlocks:
 
         assert my_output == desired_output
 
+
+class TestBuildingBlockXOR:
     @staticmethod
     def test_fixed_size_xor():
         """Tests xor"""
@@ -85,17 +87,6 @@ class TestBuildingBlocks:
         test_key = b"elloH"
         desired_output = b"-\t\x00\x03'"
         my_output = xor.fixed_size(test_input, test_key)
-
-        assert my_output == desired_output
-
-    @staticmethod
-    def test_repeat_extend_string():
-        """Tests repeating a string to a certain length"""
-
-        test_input = b"Hello"
-        test_length = 13
-        desired_output = b"HelloHelloHel"
-        my_output = generate.repeat_extend_string(test_input, test_length)
 
         assert my_output == desired_output
 
@@ -111,6 +102,30 @@ class TestBuildingBlocks:
         assert my_output == desired_output
 
     @staticmethod
+    def test_break_single_byte():
+        """Tests attack against single byte XOR"""
+
+        test_input = b"yT]]^"
+        desired_output = b"HELLO"
+        my_output = xor.break_single_byte(test_input).upper()
+
+        assert my_output == desired_output
+
+
+class TestBuildingBlockGenerate:
+
+    @staticmethod
+    def test_repeat_extend_string():
+        """Tests repeating a string to a certain length"""
+
+        test_input = b"Hello"
+        test_length = 13
+        desired_output = b"HelloHelloHel"
+        my_output = generate.repeat_extend_string(test_input, test_length)
+
+        assert my_output == desired_output
+
+    @staticmethod
     def test_english_score():
         """Tests a simple English scoring function"""
 
@@ -120,12 +135,3 @@ class TestBuildingBlocks:
 
         assert my_output == desired_output
 
-    @staticmethod
-    def test_break_single_byte():
-        """Tests attack against single byte XOR"""
-
-        test_input = b"yT]]^"
-        desired_output = b"HELLO"
-        my_output = xor.break_single_byte(test_input).upper()
-
-        assert my_output == desired_output
