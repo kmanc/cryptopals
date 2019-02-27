@@ -132,7 +132,7 @@ class TestGenerate:
         assert my_output == desired_output
 
     @staticmethod
-    def test_hamming_score():
+    def test_hamming_distance():
         """Tests a simple English scoring function"""
 
         test_input_1 = b"this is a test"
