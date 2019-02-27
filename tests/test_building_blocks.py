@@ -131,3 +131,13 @@ class TestGenerate:
 
         assert my_output == desired_output
 
+    @staticmethod
+    def test_hamming_score():
+        """Tests a simple English scoring function"""
+
+        test_input_1 = b"this is a test"
+        test_input_2 = b"wokka wokka!!!"
+        desired_output = 37
+        my_output = generate.hamming_score(test_input_1, test_input_2)
+
+        assert my_output == desired_output
