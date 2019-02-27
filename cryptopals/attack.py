@@ -6,7 +6,7 @@ from cryptopals.building_blocks import xor
 
 
 def hex_to_base64(input_hex):
-    """Converts hex to base64"""
+    """https://cryptopals.com/sets/1/challenges/1"""
 
     input_bytes = convert.hex_to_bytes(input_hex)
     bytes_result = convert.bytes_to_base64(input_bytes)
@@ -16,7 +16,7 @@ def hex_to_base64(input_hex):
 
 
 def fixed_size_hex_xor(input_string_1, input_string_2):
-    """Takes in 2 hex strings and XORs them"""
+    """https://cryptopals.com/sets/1/challenges/2"""
 
     string_1_as_bytes = convert.hex_to_bytes(input_string_1)
     string_2_as_bytes = convert.hex_to_bytes(input_string_2)
