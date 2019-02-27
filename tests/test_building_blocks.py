@@ -101,7 +101,7 @@ class TestBuildingBlocks:
 
     @staticmethod
     def test_repeat_key_xor():
-        """Tests X"""
+        """Tests XOR with repeat key"""
 
         test_input = b"Hello"
         test_key = b"AB"
@@ -110,3 +110,12 @@ class TestBuildingBlocks:
 
         assert my_output == desired_output
 
+    @staticmethod
+    def test_english_score():
+        """Tests a simple English scoring function"""
+
+        test_input = b"Hello, my name is Kevin"
+        desired_output = 17
+        my_output = generate.english_score(test_input)
+
+        assert my_output == desired_output
