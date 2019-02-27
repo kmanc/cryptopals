@@ -24,3 +24,13 @@ def fixed_size_hex_xor(input_string_1, input_string_2):
     output = convert.bytes_to_hex(xor_result)
 
     return output
+
+
+def break_repeat_hex_char_xor(input_string):
+    """https://cryptopals.com/sets/1/challenges/3"""
+
+    input_bytes = convert.hex_to_bytes(input_string)
+    break_result = xor.break_single_byte(input_bytes)
+    output = convert.bytes_to_ascii(break_result)
+
+    return output
