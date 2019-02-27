@@ -1,4 +1,4 @@
-from cryptopals import xor, convert
+from cryptopals import xor, convert, generate
 
 
 def hex_to_base64(input_hex):
@@ -30,3 +30,21 @@ def break_repeat_hex_char_xor(input_string):
     output = convert.bytes_to_ascii(break_result)
 
     return output
+
+
+def find_and_break_repeat_hex_char_xor(input_lines):
+    """https://cryptopals.com/sets/1/challenges/4"""
+
+    best = tuple((0, bytes()))
+    for line in input_lines:
+        input_bytes = convert.hex_to_bytes(line)
+        break_result = xor.break_single_byte(input_bytes)
+        break_score = generate.english_score(break_result)
+        if break_score > best[0]:
+            best = (break_score, break_result)
+    output = convert.bytes_to_ascii(best[1])
+
+    return output
+
+
+
