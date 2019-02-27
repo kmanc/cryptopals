@@ -1,11 +1,7 @@
-from cryptopals.building_blocks import convert
-from cryptopals.building_blocks import encrypt
-from cryptopals.building_blocks import generate
-from cryptopals.building_blocks import pad
-from cryptopals.building_blocks import xor
+from cryptopals import xor, convert, generate
 
 
-class TestBuildingBlockConvert:
+class TestConvert:
 
     @staticmethod
     def test_ascii_to_bytes():
@@ -78,7 +74,7 @@ class TestBuildingBlockConvert:
         assert my_output == desired_output
 
 
-class TestBuildingBlockXOR:
+class TestXOR:
     @staticmethod
     def test_fixed_size_xor():
         """Tests xor"""
@@ -112,7 +108,7 @@ class TestBuildingBlockXOR:
         assert my_output == desired_output
 
 
-class TestBuildingBlockGenerate:
+class TestGenerate:
 
     @staticmethod
     def test_repeat_extend_string():

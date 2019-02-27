@@ -1,4 +1,4 @@
-from cryptopals.building_blocks import generate
+from cryptopals import generate
 
 
 def fixed_size(byte_string_1, byte_string_2):

@@ -1,8 +1,4 @@
-from cryptopals.building_blocks import convert
-from cryptopals.building_blocks import encrypt
-from cryptopals.building_blocks import generate
-from cryptopals.building_blocks import pad
-from cryptopals.building_blocks import xor
+from cryptopals import xor, convert
 
 
 def hex_to_base64(input_hex):
