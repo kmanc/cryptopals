@@ -88,3 +88,25 @@ class TestBuildingBlocks:
 
         assert my_output == desired_output
 
+    @staticmethod
+    def test_repeat_extend_string():
+        """Tests repeating a string to a certain length"""
+
+        test_input = b"Hello"
+        test_length = 13
+        desired_output = b"HelloHelloHel"
+        my_output = generate.repeat_extend_string(test_input, test_length)
+
+        assert my_output == desired_output
+
+    @staticmethod
+    def test_repeat_key_xor():
+        """Tests X"""
+
+        test_input = b"Hello"
+        test_key = b"AB"
+        desired_output = b"\t'-.."
+        my_output = xor.repeat_key(test_input, test_key)
+
+        assert my_output == desired_output
+
