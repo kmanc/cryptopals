@@ -119,3 +119,13 @@ class TestBuildingBlocks:
         my_output = generate.english_score(test_input)
 
         assert my_output == desired_output
+
+    @staticmethod
+    def test_break_single_byte():
+        """Tests attack against single byte XOR"""
+
+        test_input = b"yT]]^"
+        desired_output = b"HELLO"
+        my_output = xor.break_single_byte(test_input).upper()
+
+        assert my_output == desired_output
