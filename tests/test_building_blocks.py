@@ -77,3 +77,14 @@ class TestBuildingBlocks:
 
         assert my_output == desired_output
 
+    @staticmethod
+    def test_fixed_size_xor():
+        """Tests xor"""
+
+        test_input = b"Hello"
+        test_key = b"elloH"
+        desired_output = b"-\t\x00\x03'"
+        my_output = xor.fixed_size(test_input, test_key)
+
+        assert my_output == desired_output
+
