@@ -1,4 +1,3 @@
-import heapq
 from cryptopals import generate
 from itertools import chain, zip_longest
 
