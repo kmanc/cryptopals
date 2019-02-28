@@ -1,4 +1,5 @@
 from cryptopals import xor, convert, generate
+from cryptopals.challenges import file
 
 
 class TestConvert:
@@ -87,7 +88,7 @@ class TestXOR:
         assert my_output == desired_output
 
     @staticmethod
-    def test_repeat_key_xor():
+    def test_repeat_key():
         """Tests XOR with repeat key"""
 
         test_input = b"Hello"
@@ -103,9 +104,31 @@ class TestXOR:
 
         test_input = b"yT]]^"
         desired_output = b"HELLO"
-        my_output = xor.break_single_byte(test_input).upper()
+        my_output = xor.break_single_byte(test_input)
+
+        assert my_output.upper() == desired_output
+
+    @staticmethod
+    def test_determine_key_length():
+        """Determines most likely key length for an XOR ciphertext"""
+
+        test_input = file.to_string("tests/other_resources/lose_yourself_xor_eminem.txt")
+        test_bytes = convert.hex_to_bytes(test_input)
+        desired_output = [9, 6, 5]
+        my_output = xor.determine_key_length(test_bytes)
 
         assert my_output == desired_output
+
+    @staticmethod
+    def test_break_repeat_key():
+        """Tests attack against repeated key XOR"""
+
+        test_input = file.to_string("tests/other_resources/lose_yourself_xor_eminem.txt")
+        test_bytes = convert.hex_to_bytes(test_input)
+        desired_output = file.to_bytes("tests/other_resources/lose_yourself_lyrics.txt")
+        my_output = xor.break_repeat_key(test_bytes)
+
+        assert my_output.upper() == desired_output.upper()
 
 
 class TestGenerate:
@@ -138,6 +161,6 @@ class TestGenerate:
         test_input_1 = b"this is a test"
         test_input_2 = b"wokka wokka!!!"
         desired_output = 37
-        my_output = generate.hamming_score(test_input_1, test_input_2)
+        my_output = generate.hamming_distance(test_input_1, test_input_2)
 
         assert my_output == desired_output
