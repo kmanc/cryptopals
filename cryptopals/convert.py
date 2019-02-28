@@ -11,6 +11,11 @@ def ascii_to_hex(input_1):
     return str.encode(input_1).hex()
 
 
+def base64_to_bytes(input_1):
+    """Takes in a byte string. Outputs a base64 encoded byte string"""
+    return base64.b64decode(input_1)
+
+
 def bytes_to_ascii(input_1):
     """Takes in a byte string. Outputs an ascii string"""
     return bytes.decode(input_1)
