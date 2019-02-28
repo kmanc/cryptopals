@@ -42,8 +42,6 @@ def determine_key_length(byte_string):
     second_best = sorted_by_score[1][0]
     third_best = sorted_by_score[2][0]
 
-    print(sorted_by_score)
-
     return [best_candidate, second_best, third_best]
 
 
