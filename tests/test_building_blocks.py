@@ -25,6 +25,16 @@ class TestConvert:
         assert my_output == desired_output
 
     @staticmethod
+    def test_base64_to_bytes():
+        """Tests base64 --> bytes"""
+
+        test_input = b"SGVsbG8="
+        desired_output = b"Hello"
+        my_output = convert.base64_to_bytes(test_input)
+
+        assert my_output == desired_output
+
+    @staticmethod
     def test_bytes_to_ascii():
         """Tests bytes --> ascii"""
 
