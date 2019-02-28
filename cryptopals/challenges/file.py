@@ -1,5 +1,5 @@
 def to_bytes(file_name):
-    """Takes in a file name. Outputs the contents of that file as a string"""
+    """Takes in a file name. Outputs the contents of that file as a byte string"""
     with open(file_name, 'r') as f:
         data = f.read()
 
