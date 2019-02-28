@@ -12,7 +12,7 @@ def ascii_to_hex(input_1):
 
 
 def base64_to_bytes(input_1):
-    """Takes in a byte string. Outputs a base64 encoded byte string"""
+    """Takes in a base64 encoded byte string. Outputs a byte string"""
     return base64.b64decode(input_1)
 
 
