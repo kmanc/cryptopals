@@ -122,7 +122,7 @@ class TestXOR:
     def test_determine_key_length():
         """Determines most likely key length for an XOR ciphertext"""
 
-        test_input = file.to_string("tests/other_resources/lose_yourself_xor_eminem.txt")
+        test_input = file.to_string("tests/other_resources/lose_yourself_xor_eminem_hex.txt")
         test_bytes = convert.hex_to_bytes(test_input)
         desired_output = [9, 6, 5]
         my_output = xor.determine_key_length(test_bytes)
@@ -133,7 +133,7 @@ class TestXOR:
     def test_break_repeat_key():
         """Tests attack against repeated key XOR"""
 
-        test_input = file.to_string("tests/other_resources/lose_yourself_xor_eminem.txt")
+        test_input = file.to_string("tests/other_resources/lose_yourself_xor_eminem_hex.txt")
         test_bytes = convert.hex_to_bytes(test_input)
         desired_output = file.to_bytes("tests/other_resources/lose_yourself_lyrics.txt")
         my_output = xor.break_repeat_key(test_bytes)
