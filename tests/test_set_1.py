@@ -62,10 +62,22 @@ class TestChallenges:
     def test_challenge_6():
         """Break repeat key XOR"""
 
-        challenge_file = file.to_lines("tests/challenge_inputs/set_1/challenge_6.txt")
+        challenge_file = file.to_string("tests/challenge_inputs/set_1/challenge_6.txt")
         answer_file = file.to_string("tests/challenge_answers/set_1/challenge_6.txt")
 
         attack_output = set_1.break_repeat_key_xor(challenge_file)
 
         assert attack_output.upper() == answer_file.upper()
+
+    @staticmethod
+    def test_challenge_7():
+        """AES ECB decrypt"""
+
+        challenge_file = file.to_string("tests/challenge_inputs/set_1/challenge_7.txt")
+        challenge_key = "YELLOW SUBMARINE"
+        answer_file = file.to_string("tests/challenge_answers/set_1/challenge_7.txt")
+
+        attack_output = set_1.aes_ecb_decrypt(challenge_file, challenge_key)
+
+        assert attack_output == answer_file + "\x04\x04\x04\x04"
 

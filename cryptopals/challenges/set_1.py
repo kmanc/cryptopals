@@ -1,4 +1,4 @@
-from cryptopals import xor, convert, generate
+from cryptopals import xor, convert, encrypt, generate
 
 
 def hex_to_base64(input_hex):
@@ -59,13 +59,24 @@ def repeat_key_xor(input_string):
     return output
 
 
-def break_repeat_key_xor(input_lines):
+def break_repeat_key_xor(input_string):
     """https://cryptopals.com/sets/1/challenges/6"""
 
-    input_string = "".join(line.strip() for line in input_lines)
     input_bytes = convert.base64_to_bytes(input_string)
     broken_ciphertext = xor.break_repeat_key(input_bytes)
-    bytes_ciphertext = convert.bytes_to_ascii(broken_ciphertext)
-    output = bytes_ciphertext.replace(" \n", "\n")
+    broken_ciphertext_string = convert.bytes_to_ascii(broken_ciphertext)
+    output = broken_ciphertext_string.replace(" \n", "\n")
+
+    return output
+
+
+def aes_ecb_decrypt(input_string, input_key):
+    """https://cryptopals.com/sets/1/challenges/7"""
+
+    input_bytes = convert.base64_to_bytes(input_string)
+    key_bytes = convert.ascii_to_bytes(input_key)
+    plaintext_bytes = encrypt.aes_ecb_decrypt(input_bytes, key_bytes)
+    plaintext_string = convert.bytes_to_ascii(plaintext_bytes)
+    output = plaintext_string.replace(" \n", "\n")
 
     return output
