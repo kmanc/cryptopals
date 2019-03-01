@@ -58,3 +58,14 @@ def repeat_key_xor(input_string):
 
     return output
 
+
+def break_repeat_key_xor(input_lines):
+    """https://cryptopals.com/sets/1/challenges/6"""
+
+    input_string = "".join(line.strip() for line in input_lines)
+    input_bytes = convert.base64_to_bytes(input_string)
+    broken_ciphertext = xor.break_repeat_key(input_bytes)
+    bytes_ciphertext = convert.bytes_to_ascii(broken_ciphertext)
+    output = bytes_ciphertext.replace(" \n", "\n")
+
+    return output

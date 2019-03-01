@@ -58,3 +58,14 @@ class TestChallenges:
 
         assert attack_output == answer_file
 
+    @staticmethod
+    def test_challenge_6():
+        """Break repeat key XOR"""
+
+        challenge_file = file.to_lines("tests/challenge_inputs/set_1/challenge_6.txt")
+        answer_file = file.to_string("tests/challenge_answers/set_1/challenge_6.txt")
+
+        attack_output = set_1.break_repeat_key_xor(challenge_file)
+
+        assert attack_output.upper() == answer_file.upper()
+
