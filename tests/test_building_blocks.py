@@ -1,4 +1,4 @@
-from cryptopals import xor, convert, encrypt, generate
+from cryptopals import xor, convert, cryptology, generate
 from cryptopals.challenges import file
 
 
@@ -185,6 +185,6 @@ class TestEncrypt:
         test_input = b'\xa4\xb7\x8dMy\xd1\x92j_\xfd\x86:m\xfdj\x82'
         test_key = b"I'm a key len 16"
         desired_output = b"Hello\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b"
-        my_output = encrypt.aes_ecb_decrypt(test_input, test_key)
+        my_output = cryptology.aes_ecb_decrypt(test_input, test_key)
 
         assert my_output == desired_output
