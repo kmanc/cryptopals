@@ -1,4 +1,4 @@
-from cryptopals import convert, cryptology
+from cryptopals import convert, cryptology, pad
 from cryptopals.challenges import file
 
 
@@ -41,3 +41,17 @@ class Cryptology:
         my_output = cryptology.decrypt_aes_cbc(test_input, test_key, test_iv)
 
         assert my_output == desired_output + b"\x01"
+
+    @staticmethod
+    def test_encrypt_aes_ecb():
+        """Tests AES ECB encryption"""
+
+        test_input = file.to_bytes("tests/other_resources/lose_yourself_lyrics.txt")
+        test_input = pad.pkcs_7(test_input, 16)
+        test_key = b"YELLOW SUBMARINE"
+        hex_output = file.to_string("tests/other_resources/lose_yourself_ecb_yellow_submarine_hex.txt")
+        desired_output = convert.hex_to_bytes(hex_output)
+        my_output = cryptology.encrypt_aes_ecb(test_input, test_key)
+
+        assert my_output == desired_output
+

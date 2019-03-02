@@ -1,4 +1,4 @@
-from cryptopals import pad, xor
+from cryptopals import xor
 from Crypto.Cipher import AES
 
 
@@ -35,3 +35,10 @@ def decrypt_aes_cbc(ciphertext, key, iv):
         iv = ciphertext_chunk
 
     return plaintext
+
+
+def encrypt_aes_ecb(plaintext, key):
+    """Take in a byte strings representing plaintext and a key. Outputs the AES-ECB encrypted ciphertext"""
+    cipher = AES.new(key, AES.MODE_ECB)
+
+    return cipher.encrypt(plaintext)
