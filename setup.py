@@ -8,7 +8,7 @@ setup(
     author_email="kmanc@comcast.net",
     description="Matasano cryptopals challenges",
     license='MIT',
-    keywords="Python, Crypto",
+    keywords="Python, Crypto, Cryptopals",
     url="https://github.com/kmanc/cryptopals",
     packages=['cryptopals'],
     long_description='',
