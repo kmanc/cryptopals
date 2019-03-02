@@ -1,7 +1,7 @@
 from cryptopals.challenges import set_1, file
 
 
-class TestChallenges:
+class Challenges:
 
     @staticmethod
     def test_challenge_1():
@@ -79,7 +79,7 @@ class TestChallenges:
 
         attack_output = set_1.aes_ecb_decrypt(challenge_file, challenge_key)
 
-        assert attack_output == answer_file + "\x04\x04\x04\x04"
+        assert attack_output == answer_file
 
     @staticmethod
     def test_challenge_8():
