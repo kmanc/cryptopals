@@ -176,7 +176,7 @@ class TestGenerate:
         assert my_output == desired_output
 
 
-class TestEncrypt:
+class TestCryptology:
 
     @staticmethod
     def test_repeat_extend_string():
@@ -185,6 +185,19 @@ class TestEncrypt:
         test_input = b'\xa4\xb7\x8dMy\xd1\x92j_\xfd\x86:m\xfdj\x82'
         test_key = b"I'm a key len 16"
         desired_output = b"Hello\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b"
-        my_output = cryptology.aes_ecb_decrypt(test_input, test_key)
+        my_output = cryptology.decrypt_aes_ecb(test_input, test_key)
 
         assert my_output == desired_output
+
+    @staticmethod
+    def test_detect_aes_ecb():
+        """Tests detecting AES ECB encryption"""
+
+        test_input = file.to_lines("tests/other_resources/aes_ecb_line_and_random_line.txt")
+        desired_output_1 = True
+        my_output_1 = cryptology.detect_aes_ecb(test_input[0])
+        desired_output_2 = False
+        my_output_2 = cryptology.detect_aes_ecb(test_input[1])
+
+        assert my_output_1 == desired_output_1
+        assert my_output_2 == desired_output_2
