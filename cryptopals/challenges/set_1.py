@@ -1,4 +1,4 @@
-from cryptopals import xor, convert, cryptology, generate
+from cryptopals import pad, xor, convert, cryptology, generate
 
 
 def hex_to_base64(input_hex):
@@ -76,7 +76,8 @@ def aes_ecb_decrypt(input_string, input_key):
     input_bytes = convert.base64_to_bytes(input_string)
     key_bytes = convert.ascii_to_bytes(input_key)
     plaintext_bytes = cryptology.decrypt_aes_ecb(input_bytes, key_bytes)
-    plaintext_string = convert.bytes_to_ascii(plaintext_bytes)
+    unpadded = pad.undo_pkcs_7(plaintext_bytes)
+    plaintext_string = convert.bytes_to_ascii(unpadded)
     output = plaintext_string.replace(" \n", "\n")
 
     return output

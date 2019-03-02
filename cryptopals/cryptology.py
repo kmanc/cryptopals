@@ -1,3 +1,4 @@
+from cryptopals import pad, xor
 from Crypto.Cipher import AES
 
 
@@ -21,3 +22,16 @@ def detect_aes_ecb(ciphertext):
         return True
 
     return False
+
+
+def decrypt_aes_cbc(ciphertext, key, iv):
+    """Take in byte strings representing AES-CBC encrypted ciphertext, key, iv. Output the plaintext"""
+    plaintext = bytes()
+    for index in range(0, len(ciphertext), __AES_BLOCK_SIZE):
+        ciphertext_chunk = ciphertext[index: index + __AES_BLOCK_SIZE]
+        decrypted_chunk = decrypt_aes_ecb(ciphertext_chunk, key)
+        plaintext_chunk = xor.fixed_size(decrypted_chunk, iv)
+        plaintext += plaintext_chunk
+        iv = ciphertext_chunk
+
+    return plaintext

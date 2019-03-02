@@ -1,7 +1,7 @@
 from cryptopals.challenges import set_2, file
 
 
-class TestChallenges:
+class Challenges:
 
     @staticmethod
     def test_challenge_9():
