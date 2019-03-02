@@ -3,10 +3,10 @@ from setuptools import setup
 
 setup(
     name="cryptopals",
-    version="0.0.2",
+    version="0.0.3",
     author="Kevin Conley",
     author_email="kmanc@comcast.net",
-    description="Matasano cryptopals challenges",
+    description="Provides functions to complete Matasano cryptopals challenges",
     license='MIT',
     keywords="Python, Crypto, Cryptopals",
     url="https://github.com/kmanc/cryptopals",
