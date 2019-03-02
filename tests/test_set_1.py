@@ -81,3 +81,13 @@ class TestChallenges:
 
         assert attack_output == answer_file + "\x04\x04\x04\x04"
 
+    @staticmethod
+    def test_challenge_8():
+        """Detect AES ECB Ciphertext"""
+
+        challenge_file = file.to_lines("tests/challenge_inputs/set_1/challenge_8.txt")
+        answer_file = file.to_string("tests/challenge_answers/set_1/challenge_8.txt")
+
+        attack_output = set_1.aes_ecb_detect(challenge_file)
+
+        assert attack_output == answer_file

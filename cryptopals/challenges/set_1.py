@@ -75,8 +75,18 @@ def aes_ecb_decrypt(input_string, input_key):
 
     input_bytes = convert.base64_to_bytes(input_string)
     key_bytes = convert.ascii_to_bytes(input_key)
-    plaintext_bytes = cryptology.aes_ecb_decrypt(input_bytes, key_bytes)
+    plaintext_bytes = cryptology.decrypt_aes_ecb(input_bytes, key_bytes)
     plaintext_string = convert.bytes_to_ascii(plaintext_bytes)
     output = plaintext_string.replace(" \n", "\n")
 
     return output
+
+
+def aes_ecb_detect(input_lines):
+    """https://cryptopals.com/sets/1/challenges/8"""
+
+    for line in input_lines:
+        if cryptology.detect_aes_ecb(line):
+            return line
+
+    return "No line found"
