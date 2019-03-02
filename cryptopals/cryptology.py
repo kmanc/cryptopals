@@ -42,3 +42,18 @@ def encrypt_aes_ecb(plaintext, key):
     cipher = AES.new(key, AES.MODE_ECB)
 
     return cipher.encrypt(plaintext)
+
+
+def encrypt_aes_cbc(plaintext, key, iv):
+    """Take in byte strings representing plaintext, key, iv. Output the AES-CBC encrypted ciphertext"""
+    ciphertext = bytes()
+    cipher = AES.new(key, AES.MODE_ECB)
+    for index in range(0, len(plaintext), __AES_BLOCK_SIZE):
+        plaintext_chunk = plaintext[index: index + __AES_BLOCK_SIZE]
+        xored_chunk = xor.fixed_size(plaintext_chunk, iv)
+        ciphertext_chunk = cipher.encrypt(xored_chunk)
+        ciphertext += ciphertext_chunk
+        iv = ciphertext_chunk
+
+    return ciphertext
+
