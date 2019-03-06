@@ -1,3 +1,5 @@
+import json
+
 def to_bytes(file_name):
     """Takes in a file name. Outputs the contents of that file as a byte string"""
     with open(file_name, 'r') as f:
@@ -28,3 +30,11 @@ def to_lines(file_name):
         stripped_lines = list(map(str.strip, f))
 
     return stripped_lines
+
+
+def to_dict(file_name):
+    """Takes in a file name. Output a list of strings where each element is a line in the original file"""
+    with open(file_name, 'r') as f:
+        data = json.load(f)
+
+    return data
