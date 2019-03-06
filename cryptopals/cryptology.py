@@ -3,6 +3,7 @@ from Crypto.Cipher import AES
 
 
 __AES_BLOCK_SIZE = 16
+__ASCII_RANGE = [i for i in range(0, 256)]
 
 
 def decrypt_aes_ecb(ciphertext, key):
@@ -56,4 +57,15 @@ def encrypt_aes_cbc(plaintext, key, iv):
         iv = ciphertext_chunk
 
     return ciphertext
+
+
+def brute_force_aes_ecb_table(block_size, key):
+    """Take in a blocksize for an AES-ECB cipher and a key, and outputs a dictionary that can be used to brute-force
+    look up an unknown plaintext (if it was encrypted with that key)"""
+    lookup_table = dict()
+    for char in __ASCII_RANGE:
+        table_key = encrypt_aes_ecb(b'A' * (block_size - 1) + bytes([char]), key)
+        lookup_table[table_key] = bytes([char])
+
+    return lookup_table
 
