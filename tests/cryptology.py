@@ -69,3 +69,17 @@ class Cryptology:
 
         assert my_output == desired_output
 
+    @staticmethod
+    def test_brute_force_aes_ecb_table():
+        """Tests building a table to brute force AES ECB"""
+
+        test_input = 16
+        test_key = b"YELLOW SUBMARINE"
+        desired_hex = file.to_dict("tests/other_resources/aes_brute_force_table.json")
+        my_output = cryptology.brute_force_aes_ecb_table(test_input, test_key)
+        desired_output = dict()
+        for key, value in desired_hex.items():
+            desired_output[convert.hex_to_bytes(key)] = convert.hex_to_bytes(value)
+
+        assert my_output == desired_output
+
