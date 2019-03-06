@@ -1,4 +1,5 @@
 import math
+import os
 
 
 def repeat_extend_string(byte_string, length):
@@ -26,4 +27,9 @@ def hamming_distance(byte_string_1, byte_string_2):
     joined_binary_string = "".join([bin(num) for num in xor_gen])
 
     return joined_binary_string.count("1")
+
+
+def random_byte_string(length):
+    """Take in a length. Outputs a random byte string of length length"""
+    return os.urandom(length)
 

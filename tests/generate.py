@@ -35,3 +35,13 @@ class Generate:
 
         assert my_output == desired_output
 
+    @staticmethod
+    def random_byte_string():
+        """Tests generating a random byte string of input length"""
+
+        test_input = 16
+        desired_output = 16
+        my_output = generate.random_byte_string(test_input)
+
+        assert len(my_output) == desired_output
+
