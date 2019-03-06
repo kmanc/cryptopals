@@ -16,7 +16,7 @@ def decrypt_aes_ecb(ciphertext, key):
 def detect_aes_ecb(ciphertext):
     """Takes in a ciphertext and returns True if the line is determined to be ECB by repeated blocks of ciphertext"""
     number_original_chunks = len(ciphertext) // __AES_BLOCK_SIZE
-    dedupe_chunks = {ciphertext[i * __AES_BLOCK_SIZE: (i + 1) * __AES_BLOCK_SIZE] for i in range(number_original_chunks)}
+    dedupe_chunks = {ciphertext[i: i + __AES_BLOCK_SIZE] for i in range(0, len(ciphertext), __AES_BLOCK_SIZE)}
 
     if len(dedupe_chunks) < number_original_chunks:
         return True
