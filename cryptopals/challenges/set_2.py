@@ -35,7 +35,6 @@ def aes_ecb_cbc_oracle(input_bytes, input_key, input_iv):
                  cryptology.detect_aes_ecb(cbc_ct),
                  cryptology.detect_aes_ecb(cbc_ct),
                  cryptology.detect_aes_ecb(ecb_ct)]
-    print(test_list)
     output = ['ECB' if x is True else 'CBC' for x in test_list]
 
     return output

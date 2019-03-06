@@ -37,7 +37,6 @@ class Challenges:
     answer_file = file.to_lines("tests/challenge_answers/set_2/challenge_11.txt")
 
     attack_output = set_2.aes_ecb_cbc_oracle(challenge_file, challenge_key, challenge_iv)
-    print(attack_output)
 
     assert attack_output[0] == answer_file[0]
     assert attack_output[1] == answer_file[1]
