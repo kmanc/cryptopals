@@ -9,5 +9,4 @@ dist/
 
 # Files
 .DS_Store
-*.json
 *.pyc
