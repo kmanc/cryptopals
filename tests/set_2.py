@@ -1,3 +1,4 @@
+from cryptopals import generate
 from cryptopals.challenges import set_2, file
 
 
@@ -43,4 +44,16 @@ class Challenges:
     assert attack_output[2] == answer_file[2]
     assert attack_output[3] == answer_file[3]
     assert attack_output[4] == answer_file[4]
+
+    @staticmethod
+    def test_challenge_12():
+        """AES ECB bytes-at-a-time break"""
+
+        challenge_file = file.to_bytes("tests/challenge_inputs/set_2/challenge_12.txt")
+        challenge_key = generate.random_byte_string(16)
+        answer_file = file.to_bytes("tests/challenge_answers/set_2/challenge_12.txt")
+
+        attack_output = set_2.aes_ecb_bytes_at_a_time(challenge_file, challenge_key)
+
+        assert attack_output == answer_file
 

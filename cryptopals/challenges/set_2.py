@@ -38,3 +38,26 @@ def aes_ecb_cbc_oracle(input_bytes, input_key, input_iv):
     output = ['ECB' if x is True else 'CBC' for x in test_list]
 
     return output
+
+
+def aes_ecb_bytes_at_a_time(unknown_input, unknown_key):
+    """https://cryptopals.com/sets/2/challenges/12"""
+
+    unknown_append = convert.base64_to_bytes(unknown_input)
+    size = 1
+    while True:
+        padded = pad.pkcs_7(b"", size)
+        try:
+            cryptology.encrypt_aes_ecb(padded, unknown_key)
+        except ValueError:
+            size += 1
+            continue
+        block_size = len(padded)
+        break
+    brute_dict = cryptology.brute_force_aes_ecb_table(block_size, unknown_key)
+    output = b""
+    for char in unknown_append:
+        table_key = cryptology.encrypt_aes_ecb(b"A" * (block_size - 1) + bytes([char]), unknown_key)
+        output += brute_dict[table_key]
+
+    return output
