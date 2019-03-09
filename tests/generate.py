@@ -45,3 +45,16 @@ class Generate:
 
         assert len(my_output) == desired_output
 
+    @staticmethod
+    def test_random_profile_from_email_address():
+        """Tests generating an escaped profile from an email address"""
+
+        test_input_1 = b"foo@gmail.com"
+        desired_output_1 = b"email=foo@gmail.com&uid=10&role=user"
+        my_output_1 = generate.profile_from_email_address(test_input_1)
+        test_input_2 = b"foo@gmail.com&role=admin"
+        desired_output_2 = b"email=foo@gmail.comroleadmin&uid=10&role=user"
+        my_output_2 = generate.profile_from_email_address(test_input_2)
+
+        assert my_output_1 == desired_output_1
+        assert my_output_2 == desired_output_2

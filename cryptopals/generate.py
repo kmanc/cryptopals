@@ -33,3 +33,11 @@ def random_byte_string(length):
     """Take in a length. Outputs a random byte string of length length"""
     return os.urandom(length)
 
+
+def profile_from_email_address(email_address):
+    """Take in an email address. Output a user profile for that email address, with character escapes"""
+    escaped = email_address.replace(b"=", b"").replace(b"&", b"")
+    return b"".join([b"email=", escaped, b"&uid=10&role=user"])
+
+
+
