@@ -39,3 +39,10 @@ def hex_to_ascii(input_1):
 def hex_to_bytes(input_1):
     """Takes in a hex encoded string. Outputs a byte string"""
     return bytes.fromhex(input_1)
+
+
+def query_string_to_dict(input_1):
+    """Takes in a byte string representing a query string. Outputs a dictionary"""
+    key_value_strings = input_1.split(b'&')
+
+    return {pair.split(b'=')[0]: pair.split(b'=')[1] for pair in key_value_strings}

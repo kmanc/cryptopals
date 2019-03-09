@@ -83,3 +83,14 @@ class Convert:
 
         assert my_output == desired_output
 
+    @staticmethod
+    def test_query_string_to_dict():
+        """Tests query string --> dict"""
+
+        test_input = b"foo=bar&baz=qux&zap=zazzle"
+        desired_output = {b"foo": b"bar",
+                          b"baz": b"qux",
+                          b"zap": b"zazzle"}
+        my_output = convert.query_string_to_dict(test_input)
+
+        assert my_output == desired_output
