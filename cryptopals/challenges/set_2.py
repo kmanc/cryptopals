@@ -1,4 +1,4 @@
-from cryptopals import convert, cryptology, pad
+from cryptopals import convert, cryptology, generate, pad
 
 
 def pkcs_7_pad(input_string):
@@ -61,3 +61,24 @@ def aes_ecb_bytes_at_a_time(unknown_input, unknown_key):
         output += brute_dict[table_key]
 
     return output
+
+
+def aes_ecb_cut_and_paste(input_bytes, unknown_key):
+    """https://cryptopals.com/sets/2/challenges/13"""
+
+    email_profile = generate.profile_from_email_address(input_bytes)
+    padded_profile = pad.pkcs_7(email_profile, 16)
+    encrypted_profile = cryptology.encrypt_aes_ecb(padded_profile, unknown_key)
+    profile_cut = encrypted_profile[:-16]
+    padded_admin = pad.pkcs_7(b'admin', 16)
+    admin_paste = cryptology.encrypt_aes_ecb(padded_admin, unknown_key)
+    profile_plaintext = cryptology.decrypt_aes_ecb(profile_cut + admin_paste, unknown_key)
+    output = pad.undo_pkcs_7(profile_plaintext)
+
+    return output
+
+
+
+
+
+

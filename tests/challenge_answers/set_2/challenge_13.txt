@@ -1,0 +1,1 @@
+email=foo@gmail.com&uid=10&role=admin

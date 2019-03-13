@@ -57,3 +57,14 @@ class Challenges:
 
         assert attack_output == answer_file
 
+    @staticmethod
+    def test_challenge_13():
+        """AES ECB cut and paste"""
+
+        challenge_file = file.to_bytes("tests/challenge_inputs/set_2/challenge_13.txt")
+        challenge_key = generate.random_byte_string(16)
+        answer_file = file.to_bytes("tests/challenge_answers/set_2/challenge_13.txt")
+
+        attack_output = set_2.aes_ecb_cut_and_paste(challenge_file, challenge_key)
+
+        assert attack_output == answer_file
