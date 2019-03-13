@@ -1,4 +1,4 @@
-from cryptopals import xor
+from cryptopals import pad, xor
 from Crypto.Cipher import AES
 
 
@@ -59,13 +59,26 @@ def encrypt_aes_cbc(plaintext, key, iv):
     return ciphertext
 
 
-def brute_force_aes_ecb_table(block_size, key):
+def brute_force_aes_ecb_table(block_size, key, prefix=b""):
     """Take in a blocksize for an AES-ECB cipher and a key, and outputs a dictionary that can be used to brute-force
     look up an unknown plaintext (if it was encrypted with that key)"""
     lookup_table = dict()
     for char in __ASCII_RANGE:
-        table_key = encrypt_aes_ecb(b'A' * (block_size - 1) + bytes([char]), key)
+        table_key = encrypt_aes_ecb(prefix + b'A' * (block_size - 1) + bytes([char]), key)
         lookup_table[table_key] = bytes([char])
 
     return lookup_table
+
+
+def determine_aes_ecb_blocksize(unknown_key=b"\x00"*16):
+    """Finds the block size of an AES ECB cipher"""
+    size = 1
+    while True:
+        padded = pad.pkcs_7(b"", size)
+        try:
+            encrypt_aes_ecb(padded, unknown_key)
+        except ValueError:
+            size += 1
+            continue
+        return len(padded)
 
