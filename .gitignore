@@ -3,3 +3,8 @@ __pycache__/
 venv/
 dist/
 .idea/
+.pytest_cache/
+.eggs/
+
+# Files
+
