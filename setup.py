@@ -1,5 +1,8 @@
 from setuptools import setup
 
+with open("README.MD", "r") as f:
+    long_description = f.read()
+
 setup(
     name="cryptopals",
     version="0.0.3",
@@ -10,7 +13,7 @@ setup(
     keywords="Python, Crypto, Cryptopals",
     url="https://github.com/kmanc/cryptopals",
     packages=["cryptopals"],
-    long_description="",
+    long_description=long_description,
     python_requires=">=3.6",
     classifiers=[
         "Development Status :: 5 - Production/Stable",
