@@ -1,2 +1,12 @@
 # Directories
 __pycache__/
+.eggs/
+.idea/
+.pytest_cache/
+build/
+cryptopals.egg-info/
+dist/
+venv/
+
+# Files
+
