@@ -1,5 +1,6 @@
 import input_output
-import _xor
+import xor
+
 
 def complete_challenge(challenge_input_1, challenge_input_2):
     bytes_input_1 = input_output.hex_to_bytes(challenge_input_1)
