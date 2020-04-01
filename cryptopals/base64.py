@@ -1,4 +1,5 @@
-alphabet = {0: b'A',
+alphabet = {
+            0: b'A',
             1: b'B',
             2: b'C',
             3: b'D',
@@ -61,7 +62,8 @@ alphabet = {0: b'A',
             60: b'8',
             61: b'9',
             62: b'+',
-            63: b'/'}
+            63: b'/'
+}
 
 
 def base64_encode(input_bytes):
