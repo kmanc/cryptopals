@@ -32,3 +32,10 @@ def english_score(input_bytes):
     chars_in_point_worthy = list(filter(point_worthy.__contains__, input_bytes))
 
     return len(chars_in_point_worthy)
+
+
+def hamming_distance(byte_string_1, byte_string_2):
+    xor_result = ((a ^ b) for (a, b) in zip(byte_string_1, byte_string_2))
+    joined_binary_string = "".join([bin(num) for num in xor_result])
+
+    return joined_binary_string.count("1")
