@@ -1,4 +1,4 @@
-from cryptopals import statistics
+from cryptopals.building_blocks import statistics
 
 
 class Statistics:
