@@ -1,7 +1,7 @@
 from cryptopals.attacks import xor
 
 
-class Attacks:
+class XorAttacks:
 
 	@staticmethod
 	def test_xor_break_byte():
