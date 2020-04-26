@@ -3,7 +3,8 @@ from cryptopals.building_blocks.statistics import english_score, hamming_distanc
 from cryptopals.building_blocks.xor import xor_same_length, resize_bytes
 
 
-def xor_break_byte_ciphertext(input_bytes):
+def xor_break_byte_ciphertext(input_bytes: bytes):
+	"""Takes in a byte string. Decrypts the string as though it is xored with a single byte"""
 	input_length = len(input_bytes)
 	best_so_far = {
 		"key": bytes(),
@@ -26,7 +27,8 @@ def xor_break_byte_ciphertext(input_bytes):
 	return best_so_far
 
 
-def xor_break_key_length(input_bytes):
+def xor_break_key_length(input_bytes: bytes):
+	"""Takes in a byte string. Attempts to find the length of the key used for a repeated-key xor"""
 	distance_key_dict = {}
 	max_key_tested = min(40, int(len(input_bytes) / 16))
 	for key_size in range(3, max_key_tested):
@@ -43,14 +45,15 @@ def xor_break_key_length(input_bytes):
 	second_best = best_keys[1]
 	third_best = best_keys[2]
 
-	return [best_candidate, second_best, third_best]
+	return {"first": best_candidate, "second": second_best, "third": third_best}
 
 
-def xor_break_keyed_ciphertext(input_bytes):
+def xor_break_keyed_ciphertext(input_bytes: bytes):
+	"""Takes in a byte string. Attempts to decrypt the string as though it is xored with a key"""
 	best_plaintexts = dict()
 	best_keys = dict()
 	key_len_guesses = xor_break_key_length(input_bytes)
-	for key_len in key_len_guesses:
+	for key_len in key_len_guesses.values():
 		plaintext_chunks = list()
 		key_candidate = b""
 		for index in range(key_len):
