@@ -133,7 +133,8 @@ reverse_alphabet = {
 }
 
 
-def base64_decode(input_bytes):
+def base64_decode(input_bytes: bytes):
+	"""Takes in a byte string. Decodes the string as though it was base64 encoded"""
 	binary_representation = ''
 	unpadded_input = input_bytes.replace(b"=", b"")
 
@@ -151,7 +152,8 @@ def base64_decode(input_bytes):
 	return bytes(new_chars)
 
 
-def base64_encode(input_bytes):
+def base64_encode(input_bytes: bytes):
+	"""Takes in a byte string. Encodes the string as base64"""
 	binary_representation = ''
 	output = b''
 
