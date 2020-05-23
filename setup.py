@@ -5,7 +5,7 @@ with open("README.MD", "r") as f:
 
 setup(
     name="cryptopals",
-    version="0.0.5",
+    version="0.1.0",
     author="Kevin Conley",
     author_email="kmancxc@gmail.com",
     description="Provides building blocks that can be used to complete Matasano Cryptopals Challenges",
