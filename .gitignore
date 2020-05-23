@@ -6,7 +6,7 @@ __pycache__/
 build/
 cryptopals.egg-info/
 dist/
-venv/
+venv_cryptopals/
 
 # Files
 *.txt
