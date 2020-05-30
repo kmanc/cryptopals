@@ -10,3 +10,4 @@ venv_cryptopals/
 
 # Files
 *.txt
+!requirements.txt
